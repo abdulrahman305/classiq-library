@@ -1,3 +1,4 @@
+import os
 import re
 import time
 from collections.abc import Iterable
@@ -13,6 +14,7 @@ from utils_for_tests import (
 )
 
 URL_ALLOW_LIST_FILE = ROOT_DIRECTORY / ".internal" / "url_allow_list.txt"
+URL_GITHUB_PREFIX = "https://github.com/classiq/classiq-library/blob/main/"
 
 # the regex below is taken from this stackoverflow:
 #   https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
@@ -27,10 +29,17 @@ NUM_RETRIES = 5
 
 @pytest.mark.parametrize("notebook_path", iterate_notebook_names())
 def test_links(notebook_path: str) -> None:
+    broken_links_messages = []
     for cell_index, url in iterate_links_from_notebook(notebook_path):
-        assert _test_single_url(
-            url
-        ), f'Broken link found! in file "{notebook_path}", cell number {cell_index} (counting only markdown cells), broken url: "{url}"'
+        if not _test_single_url(url):
+            broken_links_messages.append(
+                f'Broken link found! (#{len(broken_links_messages)+1}) in file "{notebook_path}", cell number {cell_index} (counting only markdown cells), broken url: "{url}"'
+            )
+
+    assert not broken_links_messages, (
+        f'Found {len(broken_links_messages)} broken links in "{notebook_path}": \n\t'
+        + "\n\t".join(broken_links_messages)
+    )
 
 
 def iterate_links_from_notebook(filename: str) -> Iterable[tuple[int, str]]:
@@ -54,13 +63,27 @@ def get_url_allow_list() -> list[str]:
         return []
 
 
+def check_file_instead_of_url(url: str) -> bool:
+    if not url.lower().startswith(URL_GITHUB_PREFIX):
+        return False
+
+    file_location = url[len(URL_GITHUB_PREFIX) :]
+    return (ROOT_DIRECTORY / file_location).is_file()
+
+
 def _test_single_url(
     url: str,
     retry: int = NUM_RETRIES,
     use_head: bool = True,
     follow_redirects: bool = True,
 ) -> bool:
-    if url in get_url_allow_list():
+    if check_file_instead_of_url(url):
+        return True
+
+    if os.environ.get("LIMIT_TEST_LINKS_TO_FILES_ONLY", "false").lower() == "true":
+        return True  # if we only wish to check files, then we end this test here.
+
+    if any(url.startswith(allowed) for allowed in get_url_allow_list()):
         return True
 
     if retry == 0:

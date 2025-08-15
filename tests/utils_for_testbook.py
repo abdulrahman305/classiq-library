@@ -1,4 +1,5 @@
 import json
+import warnings
 import itertools
 import base64
 import pickle
@@ -146,30 +147,42 @@ def validate_quantum_program_size(
     quantum_program: QuantumProgram,
     expected_width: int | None = None,
     expected_depth: int | None = None,
+    expected_cx_count: int | None = None,
     compare_to: QuantumProgram | None = None,
     allow_zero_size: bool = False,
 ) -> None:
-    return
-
     if compare_to is not None:
         assert compare_to.transpiled_circuit is not None  # for mypy
         return validate_quantum_program_size(
             quantum_program,
             expected_width=compare_to.data.width,
             expected_depth=compare_to.transpiled_circuit.depth,
+            expected_cx_count=compare_to.transpiled_circuit.count_ops.get("cx", 0),
         )
 
     actual_width = quantum_program.data.width
-    if expected_width is not None:
-        assert (
-            actual_width <= expected_width
-        ), f"The width of the circuit changed! (for the worse!). From {expected_width} to {actual_width}"
-    assert allow_zero_size or actual_width > 0, "Got a 0-width circuit."
+    _validate_size(actual_width, expected_width, "width", allow_zero_size)
 
-    assert quantum_program.transpiled_circuit is not None  # for mypy
-    actual_depth = quantum_program.transpiled_circuit.depth
-    if expected_depth is not None:
+    if quantum_program.transpiled_circuit is not None:
+        actual_depth = quantum_program.transpiled_circuit.depth
+        _validate_size(actual_depth, expected_depth, "depth", allow_zero_size)
+
+        actual_cx_count = quantum_program.transpiled_circuit.count_ops.get("cx", 0)
+        # allow_zero_size set to True here since there may be valid circuits with no CX gate.
+        _validate_size(actual_cx_count, expected_cx_count, "cx_count", True)
+    else:
+        if expected_depth is not None:
+            warnings.warn("Cannot validate depth, since there is no transpiled_circuit")
+        if expected_cx_count is not None:
+            warnings.warn(
+                "Cannot validate cx count, since there is no transpiled_circuit"
+            )
+
+
+def _validate_size(actual: int, expected: int | None, name: str, allow_zero_size: bool):
+    if expected is not None:
         assert (
-            actual_depth <= expected_depth
-        ), f"The depth of the circuit changed! (for the worse!). From {expected_depth} to {actual_depth}"
-    assert allow_zero_size or actual_depth > 0, "Got a 0-depth circuit."
+            actual <= expected
+        ), f"The {name} of the circuit changed! (for the worse!). From {expected} to {actual}"
+
+    assert allow_zero_size or actual > 0, f"Got a 0-{name} circuit."

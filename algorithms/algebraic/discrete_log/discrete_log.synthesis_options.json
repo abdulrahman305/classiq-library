@@ -1,45 +1,45 @@
 {
   "constraints": {
-    "max_width": 13,
     "max_gate_count": {},
+    "max_width": 13,
     "optimization_parameter": "no_opt"
   },
   "preferences": {
-    "machine_precision": 8,
     "custom_hardware_settings": {
       "basis_gates": [
-        "cx",
+        "p",
         "u2",
+        "id",
         "rx",
-        "t",
-        "rz",
-        "ry",
-        "sxdg",
-        "u1",
+        "x",
+        "cy",
         "u",
+        "cx",
+        "sx",
+        "y",
+        "sxdg",
+        "ry",
+        "h",
+        "u1",
+        "sdg",
+        "rz",
+        "cz",
         "tdg",
+        "t",
         "z",
         "r",
-        "s",
-        "h",
-        "cy",
-        "y",
-        "p",
-        "cz",
-        "x",
-        "sx",
-        "sdg",
-        "id"
+        "s"
       ],
       "is_symmetric_connectivity": true
     },
     "debug_mode": true,
-    "synthesize_all_separately": false,
-    "optimization_level": 3,
+    "machine_precision": 8,
+    "optimization_level": 1,
     "output_format": ["qasm"],
     "pretty_qasm": true,
-    "transpilation_option": "auto optimize",
+    "random_seed": 120969157,
+    "synthesize_all_separately": false,
     "timeout_seconds": 300,
-    "random_seed": 5814216
+    "transpilation_option": "auto optimize"
   }
 }

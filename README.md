@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/github/license/Classiq/classiq-library)](https://opensource.org/license/mit)
 [![Version](https://badge.fury.io/py/classiq.svg)](https://badge.fury.io/py/classiq)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/classiq)
-[![Downloads](https://img.shields.io/pypi/dm/classiq.svg)](https://pypi.org/project/classiq/)
+[![Downloads](https://static.pepy.tech/badge/classiq)](https://pepy.tech/project/classiq)
 
 <div align="center">
     <img src="README_resources/classiq-logo.svg" width="300" height="150">
@@ -82,7 +82,7 @@ show(quantum_program)
 
 result = execute(quantum_program).result()
 print(result[0].value.parsed_counts)
-# [{'res': 1}: 1000]
+# [{'res': 1}: 2048]
 ```
 
 Let's unravel the code above:

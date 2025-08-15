@@ -15,12 +15,12 @@ qfunc apply_cost(gamma: real, v: KnapsackVars) {
 }
 
 qfunc main(params: real[6], output v: KnapsackVars) {
-  allocate(v.size, v);
+  allocate(v);
   hadamard_transform(v);
   repeat (i: 3) {
-    apply_cost(params[2 * i], v);
+    apply_cost(params[0:3][i], v);
     apply_to_all(lambda(q) {
-      RX(params[(2 * i) + 1], q);
+      RX(params[3:6][i], q);
     }, v);
   }
 }
