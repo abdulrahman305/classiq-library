@@ -32,13 +32,13 @@ current_folder="$(realpath "$(dirname "$0")")"
 
 # note: there's a max of 3 running jobs per user, so we limit the threads to 3
 # # test all bernstein-vazirani notebooks
-find . -type f -name "*bernstein*.ipynb" | xargs -P2 -I{} "$current_folder/update_single_notebook.sh" {}
+find . -type f -name "*bernstein*.ipynb" | xargs -P2 -I{} "$current_folder/update_single_notebook_links.sh" {}
 # test all algorithms
-# find algorithms/ -type f -name "*.ipynb" | xargs -P3 -I{} "$current_folder/update_single_notebook.sh" {}
+# find algorithms/ -type f -name "*.ipynb" | xargs -P3 -I{} "$current_folder/update_single_notebook_links.sh" {}
 # # test 3 notebooks
-# find . -type f -name "*.ipynb" | head -n 3 | xargs -P3 -I{} "$current_folder/update_single_notebook.sh" {}
+# find . -type f -name "*.ipynb" | head -n 3 | xargs -P3 -I{} "$current_folder/update_single_notebook_links.sh" {}
 # # test all notebooks
-# find algorithms applications tutorials -type f -name "*.ipynb" | xargs -P3 -I{} "$current_folder/update_single_notebook.sh" {}
+# find algorithms applications tutorials -type f -name "*.ipynb" | xargs -P3 -I{} "$current_folder/update_single_notebook_links.sh" {}
 
 #
 # 3) Commit the changes + open PR
@@ -46,10 +46,17 @@ find . -type f -name "*bernstein*.ipynb" | xargs -P2 -I{} "$current_folder/updat
 echo
 echo
 echo "======= Creating PR ======="
+# 1. Add all .py files recursively
+find . -name "*.ipynb" -exec git add {} +
+# 2. Restore all .txt files to discard their changes
+find . -name "*.synthesis_options.json" -exec git restore {} +
+# 3. Commit the staged .py files
+git commit -m "Updating notebooks output"
+
 # running twice so that we'd include the pre-commit updates
-git commit -a -m "Updating notebooks output" || git commit -a -m "Updating notebooks output"
-# # running once, so that failure on pre-commit would fail this script
-# git commit -a -m "Updating notebooks output" || { echo "pre-commit failed. please fix manually"; exit 1; }
+find . -name "*.ipynb" -exec git add {} +
+git commit -m "Updating notebooks output"
+
 
 gh pr create --fill
 gh pr view --web
