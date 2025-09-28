@@ -1,14 +1,10 @@
-3_sat_grover.ipynb: 36
-3_sat_grover.qmod: 48
-3_sat_grover_large.qmod: 10
+3_sat_grover_large.qmod: 60
+3_sat_grover_small.qmod: 90
 3sat_oracles.ipynb: 1800
 CRX.qmod: 10
 CX.qmod: 10
 Option_Pricing_Workshop.ipynb: 400
 PHASE.qmod: 10
-QMOD_Workshop_Part_1.ipynb: 400
-QMOD_Workshop_Part_2.ipynb: 80
-QMOD_Workshop_Part_3.ipynb: 80
 Qmod_tutorial_part1.ipynb: 500
 Qmod_tutorial_part2.ipynb: 500
 R.qmod: 10
@@ -33,6 +29,8 @@ autoencoder.qmod: 30
 autoencoder_network.qmod: 30
 autoencoder_verifier.qmod: 30
 auxiliary_management.ipynb: 40
+banded_be.qmod: 40
+banded_sym_be.qmod: 40
 bb84_implementation.ipynb: 150
 bb84_implementation.qmod: 150
 bernstein_vazirani.ipynb: 32
@@ -51,6 +49,8 @@ bitwise_xor_integer_example.qmod: 10
 block_encoding.qmod: 300
 bpde.ipynb: 600
 bpde.qmod: 10
+cheb_lcu_solver_banded_be.qmod: 400
+cheb_lcu_solver_pauli_be.qmod: 400
 classiq_chemistry_application.ipynb: 80
 classiq_discrete_quantum_walk.ipynb: 300
 classiq_iQuHack_2025_final.ipynb: 200
@@ -103,8 +103,8 @@ facility_location.ipynb: 1656
 facility_location.qmod: 1592
 glued_trees.ipynb: 500
 glued_trees_example.qmod: 200
-grover_max_cut.ipynb: 220
-grover_max_cut.qmod: 188
+grover.ipynb: 120
+grover_max_cut.qmod: 60
 grover_operator.ipynb: 20
 grover_operator.qmod: 10
 grover_workshop.ipynb: 1000
@@ -142,7 +142,7 @@ hidden_shift_complex.qmod: 100
 hidden_shift_no_dual.qmod: 92
 hidden_shift_simple.qmod: 20
 high_level_modeling_flexible_qpe.ipynb: 100
-hw_aware_synthesis.ipynb: 20
+hw_aware_synthesis.ipynb: 40
 hybrid_qnn_for_subset_majority.ipynb: 120
 integer_linear_programming.ipynb: 400
 integer_linear_programming.qmod: 400
@@ -200,9 +200,12 @@ oblivious_amplitude_amplification.ipynb: 20
 oblivious_amplitude_amplification.qmod: 10
 option_pricing.ipynb: 140
 option_pricing.qmod: 140
+oracles_workshop.ipynb: 20
 partial_exponential_state_preparation.ipynb: 120
 patch_min_vertex_cover.ipynb: 52
 patch_min_vertex_cover.qmod: 52
+pauli_be.qmod: 40
+pauli_sym_be.qmod: 40
 pennylane_cat_qsvt_example.ipynb: 300
 pennylane_catalyst_discrete_quantum_walk.ipynb: 300
 phase_kickback.ipynb: 1000
@@ -239,6 +242,8 @@ qft.qmod: 10
 qgan_bars_and_strips.ipynb: 360
 qiskit_discrete_quantum_walk.ipynb: 300
 qiskit_qsvt.ipynb: 300
+qls_chebyshev_lcu.ipynb: 800
+qls_qsvt.ipynb: 600
 qmc_user_defined.ipynb: 176
 qmc_user_defined.qmod: 136
 qml_with_classiq_guide.ipynb: 300
@@ -264,6 +269,8 @@ qsvt_fixed_point_amplitude_amplification.ipynb: 376
 qsvt_fixed_point_amplitude_amplification.qmod: 340
 qsvt_matrix_inversion.ipynb: 180
 qsvt_matrix_inversion.qmod: 156
+qsvt_solver_banded_be.qmod: 300
+qsvt_solver_pauli_be.qmod: 300
 quantum_autocallable_option_pricing.ipynb: 700
 quantum_autoencoder.ipynb: 120
 quantum_compression_algorithm_for_symmetric_states.ipynb: 60
@@ -328,6 +335,7 @@ unitary.ipynb: 20
 unitary.qmod: 10
 variational_data_encoding.ipynb: 20
 vehicle_routing_problem.ipynb: 800
+verify_block_encoding.ipynb: 120
 vlasov_ampere.ipynb: 1200
 vlasov_ampere_qiskit.ipynb: 600
 vqe.ipynb: 20
