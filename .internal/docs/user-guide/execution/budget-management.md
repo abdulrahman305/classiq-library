@@ -1,3 +1,8 @@
+---
+search:
+    boost: 2.775
+---
+
 # Managing Execution Budget
 
 Enrolled users can run quantum programs on multiple backends without needing to provide their own credentials, by using `run_through_classiq`.
@@ -61,7 +66,7 @@ You can also define a custom spending limit to stay within a desired budget (low
 from classiq import *
 
 budget = set_budget_limit(
-    provider_vendor="Amazon Braket",
+    provider=ProviderVendor.AMAZON_BRAKET,
     limit=90,  # Set a custom limit below the provider's remaining budget
 )
 ```

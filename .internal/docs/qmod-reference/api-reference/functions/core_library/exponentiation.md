@@ -1,6 +1,6 @@
 ---
 search:
-    boost: 2.622
+    boost: 2.913
 ---
 
 <!-- spell-checker: disable -->
@@ -13,9 +13,8 @@ search:
             - commuting_paulis_exponent
             - suzuki_trotter
             - multi_suzuki_trotter
-            - parametric_suzuki_trotter
-            - sparse_suzuki_trotter
+            - unscheduled_suzuki_trotter
             - qdrift
-            - exponentiation_with_depth_constraint
+            - exponentiate
 <!-- prettier-ignore-end -->
 <!-- spell-checker: enable -->

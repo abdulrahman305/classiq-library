@@ -1,6 +1,6 @@
 ---
 search:
-    boost: 2.584
+    boost: 2.734
 ---
 
 <!-- spell-checker: disable -->
@@ -11,5 +11,6 @@ search:
         members:
             - lcu
             - lcu_pauli
+            - prepare_select
 <!-- prettier-ignore-end -->
 <!-- spell-checker: enable -->

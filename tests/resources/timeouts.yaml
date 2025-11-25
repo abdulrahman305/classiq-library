@@ -14,6 +14,7 @@ SWAP.qmod: 10
 U.qmod: 10
 WS_iQuHack_2025_final.ipynb: 200
 X.qmod: 10
+adaptive_qaoa_lib.ipynb: 1000
 add_bell_states.qmod: 10
 advection_equation_2nd_place_submission.ipynb: 500
 advection_equation_winning_submission.ipynb: 1200
@@ -34,7 +35,7 @@ banded_sym_be.qmod: 40
 bb84_implementation.ipynb: 150
 bb84_implementation.qmod: 150
 bernstein_vazirani.ipynb: 32
-bernstein_vazirani_example.qmod: 32
+bernstein_vazirani.qmod: 32
 bitwise_and_2vars_example.qmod: 10
 bitwise_and_example.ipynb: 30
 bitwise_and_integer_example.qmod: 10
@@ -51,6 +52,7 @@ bpde.ipynb: 600
 bpde.qmod: 10
 cheb_lcu_solver_banded_be.qmod: 400
 cheb_lcu_solver_pauli_be.qmod: 400
+chebyshev_approximation.ipynb: 20
 classiq_chemistry_application.ipynb: 80
 classiq_discrete_quantum_walk.ipynb: 300
 classiq_iQuHack_2025_final.ipynb: 200
@@ -117,13 +119,14 @@ hadamard_transform.qmod: 10
 hamiltonian_evolution.ipynb: 1200
 hamiltonian_evolution_exponentiation.ipynb: 20
 hamiltonian_evolution_exponentiation.qmod: 10
+hamiltonian_simulation_gqsp.qmod: 300
 hamiltonian_simulation_guide.ipynb: 1000
 hamiltonian_simulation_guide_exponentiation.qmod: 300
 hamiltonian_simulation_guide_qdrift.qmod: 300
 hamiltonian_simulation_guide_trotter.qmod: 300
 hamiltonian_simulation_qsvt.qmod: 300
 hamiltonian_simulation_qubitization.qmod: 300
-hamiltonian_simulation_with_block_encoding.ipynb: 600
+hamiltonian_simulation_with_block_encoding.ipynb: 900
 hardware_aware_mcx.ipynb: 56
 hardware_aware_mcx_all_to_all.qmod: 36
 hardware_aware_mcx_grid.qmod: 10
@@ -197,7 +200,7 @@ multiplication_2vars_example.qmod: 10
 multiplication_float_example.qmod: 10
 negation_example.ipynb: 30
 negation_example.qmod: 10
-oblivious_amplitude_amplification.ipynb: 20
+oblivious_amplitude_amplification.ipynb: 40
 oblivious_amplitude_amplification.qmod: 10
 option_pricing.ipynb: 140
 option_pricing.qmod: 140
@@ -209,8 +212,6 @@ pauli_be.qmod: 40
 pauli_sym_be.qmod: 40
 pennylane_cat_qsvt_example.ipynb: 300
 pennylane_catalyst_discrete_quantum_walk.ipynb: 300
-phase_kickback.ipynb: 1000
-phase_kickback.qmod: 1000
 portfolio_optimization.ipynb: 400
 portfolio_optimization.qmod: 400
 prepare_bell_state.ipynb: 20
@@ -243,6 +244,8 @@ qft.qmod: 10
 qgan_bars_and_strips.ipynb: 360
 qiskit_discrete_quantum_walk.ipynb: 300
 qiskit_qsvt.ipynb: 300
+qlbm.ipynb: 400
+qlbm.qmod: 400
 qls_chebyshev_lcu.ipynb: 800
 qls_qsvt.ipynb: 600
 qmc_user_defined.ipynb: 176
@@ -279,6 +282,8 @@ quantum_compression_algorithm_for_symmetric_states.qmod: 60
 quantum_counting.ipynb: 300
 quantum_counting_iqae.qmod: 200
 quantum_counting_qpe.qmod: 200
+quantum_teleportation.ipynb: 20
+quantum_teleportation.qmod: 10
 quantum_thermal_state_preparation.ipynb: 1000
 quantum_volume.ipynb: 516
 quantum_walk_circle.qmod: 25

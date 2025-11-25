@@ -1,6 +1,6 @@
 ---
 search:
-    boost: 2.540
+    boost: 2.336
 ---
 
 # Registration and Installation
@@ -51,6 +51,22 @@ pip install -U classiq
 
 Run `pip install -U classiq` in your command line, or use `!pip install -U classiq` from your Python IDE.  
 Make sure you are within the appropriate Python environment.
+
+</details>
+
+## Authentication
+
+<details markdown>
+<summary>SDK Configuration for Organizations</summary>
+
+Check your user profile page on the platform (when logged in, click your avatar
+on the top-right, then "Profile Settings"). Look for the "SDK Configuration"
+section. If it's not there, simply ignore this step.
+
+Otherwise, download the file from the profile and copy it to:
+
+-   Mac & Linux: `~/.config/classiq/config.env`
+-   Windows: `%APPDATA%\classiq\config.env`
 
 </details>
 
